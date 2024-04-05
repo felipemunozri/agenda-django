@@ -1,0 +1,38 @@
+{% extends "layout/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}| Editar Tarea{% endblock title %}
+
+{% block heading_title %}Editar Tarea{% endblock heading_title %}
+
+{% block content %}
+
+    {% include "tasks/partials/messages.html" %}
+
+    <nav class="nav justify-content-center">
+        <a class="nav-link link-info italic" href="{% url 'tasks' %}">Volver atrás</a>
+    </nav>
+    
+    <form class="text-start" action="{% url 'tasks_edit' id=id %}" method="POST">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-6">
+                {{ form.title | as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{ form.estimated_end | as_crispy_field}}
+            </div>
+            <div class="col-12">
+                {{ form.description | as_crispy_field}}
+            </div>
+            <div class="col-12">
+                {{ form.priority | as_crispy_field}}
+            </div>
+        </div>
+
+        <input class="btn btn-lg btn-light fw-bold border-white mb-3" type="submit" value="Guardar">
+    </form>
+
+{% endblock content %}

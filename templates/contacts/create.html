@@ -1,0 +1,45 @@
+{% extends "layout/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}| Crear Contacto{% endblock title %}
+
+{% block heading_title %}Crear Contacto{% endblock heading_title %}
+
+{% block content %}
+
+    <nav class="nav justify-content-center">
+        <a class="nav-link link-info italic" href="{% url 'contacts' %}">Volver atrás</a>
+    </nav>
+
+    <form class="text-start" action="{% url 'contacts_create' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-6">
+                {{ form.name | as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{ form.last_name | as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{ form.mobile| as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{ form.phone | as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{ form.email | as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{ form.company | as_crispy_field}}
+            </div>
+            <div class="col-12">
+                {{ form.notes | as_crispy_field}}
+            </div>
+        </div>
+
+        <input class="btn btn-lg btn-light fw-bold border-white mb-3" type="submit" value="Guardar">
+    </form>
+
+{% endblock content %}

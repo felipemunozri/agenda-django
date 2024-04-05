@@ -1,0 +1,40 @@
+{% extends "layout/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}| Tareas{% endblock title %}
+
+{% block heading_title %}Tareas{% endblock heading_title %}
+
+{% block heading_text %}Aquí puedes administrar tus <code>tareas</code>.{% endblock heading_text %}
+
+{% block content %}
+
+    {% include "tasks/partials/messages.html" %}
+
+    {% include "tasks/partials/search.html" %}
+    
+    <nav class="nav justify-content-center">
+        <a class="nav-link link-info italic" href="{% url 'tasks' %}">Ver todas</a>
+        <a class="nav-link link-info italic" href="{% url 'tasks_create' %}">Crear tarea</a>
+    </nav>
+
+    {% include "tasks/partials/numbers.html" %}
+
+    <ul class="list-group list-group-flush">
+        {% for task in tasks %}
+            <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+                <div class="row">
+                    <div class="col-4 text-truncate">{{ task.title }}</div>
+                    <div class="col-4 text-truncate">Prio: {{ task.priority }}</div>
+                    <div class="col-4">
+                        <a class="link-info px-1" href="{% url 'tasks_detail' id=task.id %}">Ver</a> 
+                        <a class="link-info px-1" href="{% url 'tasks_edit' id=task.id %}">Editar</a>
+                        <a class="link-info px-1" href="{% url 'tasks_delete' id=task.id %}">Eliminar</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

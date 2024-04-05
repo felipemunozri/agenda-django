@@ -1,0 +1,40 @@
+{% extends "layout/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}| Contactos{% endblock title %}
+
+{% block heading_title %}Contactos{% endblock heading_title %}
+
+{% block heading_text %}Aquí puedes administrar tus <code>contactos</code>.{% endblock heading_text %}
+
+{% block content %}
+
+    {% include "contacts/partials/messages.html" %}
+
+    {% include "contacts/partials/search.html" %}
+
+    <nav class="nav justify-content-center">
+        <a class="nav-link link-info italic" href="{% url 'contacts' %}">Ver todos</a>
+        <a class="nav-link link-info italic" href="{% url 'contacts_create' %}">Crear contacto</a>
+    </nav>
+
+    {% include "contacts/partials/alphabet.html" %}
+
+    <ul class="list-group list-group-flush">
+        {% for contact in contacts %}
+                <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+                    <div class="row">
+                        <div class="col-4 text-truncate">{{ contact.name}} {{ contact.last_name | default:"" }}</div>
+                        <div class="col-4 text-truncate">{{ contact.mobile }}</div>
+                        <div class="col-4">
+                            <a class="link-info px-1" href="{% url 'contacts_detail' id=contact.id %}">Ver</a>
+                            <a class="link-info px-1" href="{% url 'contacts_edit' id=contact.id %}">Editar</a>
+                            <a class="link-info px-1" href="{% url 'contacts_delete' id=contact.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

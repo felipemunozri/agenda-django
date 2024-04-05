@@ -1,0 +1,25 @@
+{% extends "layout/base.html" %} 
+
+{% block title %}| Home{% endblock title %} 
+
+{% block heading_title %}Bienvenido a {Agenda_}{% endblock heading_title %} 
+
+{% block heading_text %} 
+    Una aplicación pensada para aumentar tu productividad y retomar el Control sobre tu día a día. Aquí podrás administrar de forma sencilla tus <code>contactos</code> y <code>tareas</code>. ¡Así de simple!
+{% endblock heading_text %} 
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <p class="lead">
+                <a href="{% url 'contacts' %}" class="btn btn-lg btn-light fw-bold border-white">ir a Contactos</a>
+            </p>
+        </div>
+        <div class="col-auto lead">
+            <p class="lead">
+                <a href="{% url 'tasks' %}" class="btn btn-lg btn-light fw-bold border-white">ir a Tareas</a>
+            </p>
+        </div>
+    </div>
+{% endblock content %}
+

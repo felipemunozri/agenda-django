@@ -1,0 +1,35 @@
+{% extends "layout/base.html" %}
+
+{% block title %}| Detalle {{ contact.name }}{% endblock title %}
+
+{% block content %}
+
+    <nav class="nav justify-content-center">
+        <a class="nav-link link-info italic" href="{% url 'contacts' %}">Volver atrás</a>
+    </nav>
+
+    <ul class="list-group list-group-flush text-start">
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Nombre: </b>{{ contact.name }}
+        </li>
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Apellido: </b>{{ contact.last_name | default:"" }}
+        </li>
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Móvil: </b>{{ contact.mobile }}
+        </li>
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Teléfono: </b>{{ contact.phone | default:"" }}
+        </li>
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Email: </b>{{ contact.email }}
+        </li>
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Compañía: </b>{{ contact.company | default:"" }}
+        </li>
+        <li class="border border-0 text-bg-dark list-group-item list-group-item-action list-group-item-secondary">
+            <b>Notas: </b>{{ contact.notes }}
+        </li>
+    </ul>
+    
+{% endblock content %}

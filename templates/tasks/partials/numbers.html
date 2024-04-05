@@ -1,0 +1,8 @@
+<div>
+    <p class="lead">
+        <code class="text-white-50">Prioridad: </code>
+        {% for num in '12345' %}
+            <a class="text-white-50" href="{% url 'tasks' num=num %}"><code>{{ num }}</code></a>
+        {% endfor %}
+    </p>
+</div>

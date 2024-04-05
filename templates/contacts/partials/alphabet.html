@@ -1,0 +1,7 @@
+<div>
+    <p class="lead">
+        {% for letter in 'abcdefghijklmnopqrstuvwxyz' %}
+            <a class="text-white-50" href="{% url 'contacts' letter=letter %}"><code>{{ letter | upper }}</code></a>
+        {% endfor %}
+    </p>
+</div>
